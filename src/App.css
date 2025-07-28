@@ -44,18 +44,22 @@ body {
 .header-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding-left: 1rem;   /* tu peux baisser à 0.5rem si besoin */
+  padding-right: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 
 /* Logo */
 .logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  margin-left: 0;     /* assure qu'il n'y a pas de marge */
 }
+
 
 .logo-icon {
   width: 40px;
@@ -70,21 +74,23 @@ body {
 }
 
 .logo-img {
-  height: 40px;       /* ou la taille que tu veux */
-  width: 40px;
-  object-fit: cover;  /* pour que l’image remplisse bien le cercle */
-  border-radius: 50%; /* rend l’image circulaire */
-  margin-right: 0.5rem;
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 1rem;
+  background-color: white;
 }
 
 
 
 .logo-text {
-  font-size: 1.5rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: black;
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   background-clip: text;
 }
 
@@ -222,18 +228,36 @@ body {
   padding-top: 80px;
 }
 
-.hero-title {
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 800;
-  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #6366f1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 2rem;
-  line-height: 1.1;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+.hero-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900; /* Cette ligne rendra le texte encore plus gras */
+  color: black;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+
+  /* ✅ Animation */
+  animation: fadeIn 3s ease-out forwards;
+  opacity: 0; /* Initial state before fade-in */
+}
+
+
 .hero-subtitle {
+  font-family: 'Dancing Script', cursive;
   font-size: clamp(1.125rem, 3vw, 1.5rem);
   color: #4b5563;
   margin-bottom: 2rem;
@@ -609,3 +633,305 @@ body {
     padding: 2rem;
   }
 }
+
+/* creations.css - Styles pour la section des créations culinaires */
+
+.creations-section {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.creations-intro {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #6b7280;
+  margin-bottom: 4rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.creations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.creation-category {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(236, 72, 153, 0.1);
+}
+
+.creation-category:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+.creation-image-container {
+  position: relative;
+  height: 250px;
+  background: linear-gradient(135deg, #f3e8ff 0%, #fce7f3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.creation-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.creation-category:hover .creation-image {
+  transform: scale(1.05);
+}
+
+.creation-image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+.creation-placeholder-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.creation-placeholder-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.creation-content {
+  padding: 2rem;
+}
+
+.creation-category-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.creation-category-icon {
+  font-size: 1.5rem;
+}
+
+.creation-items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.creation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(236, 72, 153, 0.1);
+  transition: all 0.3s ease;
+}
+
+.creation-item:last-child {
+  border-bottom: none;
+}
+
+.creation-item:hover {
+  background: rgba(236, 72, 153, 0.03);
+  border-radius: 8px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.creation-item-description {
+  flex: 1;
+  color: #374151;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  margin-right: 1rem;
+}
+
+.creation-item-price {
+  color: #ec4899;
+  font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.creation-category-subtitle {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+/* Couleurs spécifiques par catégorie */
+.creation-category.plateaux .creation-image-container {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+}
+
+.creation-category.wraps .creation-image-container {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+}
+
+.creation-category.bagels .creation-image-container {
+  background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%);
+}
+
+.creation-category.verrines .creation-image-container {
+  background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .creations-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .creation-category {
+    margin: 0 1rem;
+  }
+  
+  .creation-content {
+    padding: 1.5rem;
+  }
+  
+  .creation-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .creation-item-description {
+    margin-right: 0;
+  }
+  
+  .creation-item-price {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .creations-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .creation-image-container {
+    height: 200px;
+  }
+  
+  .creation-placeholder-icon {
+    font-size: 3rem;
+  }
+  
+  .creation-placeholder-text {
+    font-size: 1rem;
+  }
+}
+
+.commande-grid {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.commande-content {
+  font-size: 1.1rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.order-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.order-button:hover {
+  background: linear-gradient(135deg, #d946ef 0%, #7c3aed 100%);
+}
+
+.google-reviews-section {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+.review-marquee {
+  display: flex;
+  animation: scroll-left 30s linear infinite;
+  gap: 2rem;
+  padding-left: 100%;
+}
+
+.review-card {
+  flex: 0 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 1.25rem;
+  max-width: 300px;
+  min-width: 280px;
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.4;
+}
+
+.review-author {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #ec4899;
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.review-rating {
+  font-weight: 700;
+  color: #f59e0b; /* jaune doré */
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
